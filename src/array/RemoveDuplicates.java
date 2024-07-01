@@ -7,26 +7,20 @@ public class RemoveDuplicates {
     }
 
     public static int removeDuplicates(int[] nums) {
-        int val=nums[0];
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]!=val){
-                val=nums[i];
+        int length = nums.length;
+        if(length==0)
+            return 0;
+        int i=0;
+        int j=i+1;
+        while(j<length)
+        {
+            if(nums[i]!=nums[j])
+            {
+                i++;
+                nums[i]=nums[j];
             }
-            else if(nums[i]==val && i!=0){
-                nums[i]=101;
-            }
+            j++;
         }
-        int cnt=0;
-        for(int i=0;i< nums.length;i++){
-            if(nums[i]!=101){
-                cnt++;
-                if(i!=0 && nums[cnt-1]==101){
-                    nums[cnt-1]=nums[i];
-                    nums[i]=101;
-                }
-            }
-
-        }
-        return cnt;
+        return i+1;
     }
 }
