@@ -7,18 +7,21 @@ public class RotateArray {
     }
 
     public static void rotate(int[] nums, int k) {
-        int[] numsNew=new int[nums.length];
-        k=k%(nums.length);
-        int j=nums.length-k;
-        for(int i=0;i<(nums.length-k);i++){
-            numsNew[i+k]=nums[i];
-        }
-        for(int i=0;i<k;i++){
-            numsNew[i]=nums[j];
-            j++;
-        }
-        for(int i=0;i<numsNew.length;i++){
-            System.out.print(numsNew[i]+" ");
+           int length = nums.length-1;
+           reverse(nums,0,length);
+           reverse(nums,0,k-1);
+           reverse(nums,k,length);
+    }
+
+    public static void reverse(int[] nums,int start,int end)
+    {
+        while(start<end)
+        {
+            int temp = nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
+            start++;
+            end--;
         }
     }
 }
