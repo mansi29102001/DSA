@@ -1,4 +1,4 @@
-package array;
+package arrayEassy;
 
 import java.util.*;
 

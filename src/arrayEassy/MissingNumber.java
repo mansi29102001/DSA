@@ -1,6 +1,4 @@
-package array;
-
-import java.util.Arrays;
+package arrayEassy;
 
 public class MissingNumber {
     public static void main(String[] args) {

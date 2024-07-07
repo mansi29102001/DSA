@@ -1,6 +1,4 @@
-package array;
-
-import java.util.ArrayList;
+package arrayEassy;
 
 public class SingleNumber {
     public static void main(String[] args) {
