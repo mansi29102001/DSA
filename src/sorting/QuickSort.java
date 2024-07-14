@@ -14,7 +14,7 @@ public class QuickSort {
             System.out.print(i+" ");
         }
     }
-    public static void quickSort(int[] arr,int low, int high){
+    private static void quickSort(int[] arr,int low, int high){
         if(low<high){
             int partition = partition(arr,low,high);
             quickSort(arr,low,partition-1);
@@ -22,7 +22,7 @@ public class QuickSort {
         }
 
     }
-    public static int partition(int[] arr,int low,int high){
+    private static int partition(int[] arr,int low,int high){
         int left = low;
         int right = high;
         int pivot = arr[low];
@@ -34,17 +34,20 @@ public class QuickSort {
                 right--;
             }
             if(left<right){
-                int temp = arr[right];
-                arr[right] = arr[left];
-                arr[left] = temp;
+                swap(arr,left,right);
             }
             else{
-                int temp = arr[right];
-                arr[right] = pivot;
-                arr[low] = temp;
+                swap(arr,low,right);
             }
         }
         return right;
     }
+
+    private static void swap(int[] arr, int i, int j){
+        int temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+    }
+
 
 }
