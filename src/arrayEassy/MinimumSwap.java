@@ -8,33 +8,29 @@ public class MinimumSwap {
     }
 
     public static int solve(int[] A, int B) {
-        int count=0;
-        long minElements=0;
-        for(int k=0;k<A.length;k++){
-            if(A[k]<=B){
-                minElements++;
+        int n = A.length;
+        int count = 0;
+        for (int num : A) {
+            if (num <= B) {
+                count++;
             }
         }
 
-        int j=0;
-        int minCount=Integer.MAX_VALUE;
-        for(int i=0;i<minElements+j;i++){
-            if(i<A.length){
-                if(A[i]>B){
-                    count++;
-                }
-                if(i==minElements+j-1){
-                    i=j;
-                    j++;
-                    minCount=Math.min(minCount, count);
-                    count=0;
-                }
-            }
-            else{
-                break;
-            }
+        if (count == 0) return 0;
+
+        int bad = 0;
+        for (int i = 0; i < count; i++) {
+            if (A[i] > B) bad++;
         }
 
-        return minCount;
+        int minSwaps = bad;
+
+        for (int i = 0, j = count; j < n; i++, j++) {
+            if (A[i] > B) bad--;
+            if (A[j] > B) bad++;
+            minSwaps = Math.min(minSwaps, bad);
+        }
+
+        return minSwaps;
     }
 }
